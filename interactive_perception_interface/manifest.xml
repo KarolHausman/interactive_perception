@@ -1,0 +1,20 @@
+<package>
+  <description brief="interactive_perception_interface">
+
+     interactive_perception_interface
+
+  </description>
+  <author>Karol Hausman</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/interactive_perception_interface</url>
+  <depend package="roscpp"/>
+  <depend package="pluginlib"/>
+  <depend package="pcl"/>
+  <export>
+    <cpp cflags="-I${prefix}/include" />
+  </export>
+
+</package>
+
+

@@ -1,0 +1,17 @@
+<package>
+  <description brief="plugin_manager">
+
+     plugin_manager
+
+  </description>
+  <author>Karol Hausman</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/plugin_manager</url>
+  <depend package="roscpp"/>
+  <depend package="pluginlib"/>
+  <depend package="interactive_perception_interface"/>
+
+</package>
+
+

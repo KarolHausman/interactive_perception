@@ -1,0 +1,7 @@
+<library path="lib/libStaticSegmentationImpl">
+  <class name="interactive_perception_example/StaticSegmentationImpl"type="interactive_perception_example::StaticSegmentationImpl"base_class_type="interactive_perception_interface::StaticSegmentation">
+  <description>
+  This is a static segmentation plugin
+  </description>
+  </class>
+</library>
