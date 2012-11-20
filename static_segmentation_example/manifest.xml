@@ -1,0 +1,23 @@
+<package>
+  <description brief="interactive_perception_example">
+
+     static_segmentation_example
+
+  </description>
+  <author>Karol</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/static_segmentation_example</url>
+  <depend package="roscpp"/>
+  <depend package="pluginlib"/>
+  <depend package="pcl"/>
+  <depend package="interactive_perception_interface"/>
+  <export>
+      <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lStaticSegmentationImpl" />
+      <interactive_perception_interface plugin="${prefix}/StaticSegmentationImpl_plugin.xml" />      
+  </export>
+
+
+</package>
+
+
