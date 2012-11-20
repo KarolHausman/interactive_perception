@@ -8,7 +8,6 @@
 #ifndef FULLRECONSTRUCTION_H_
 #define FULLRECONSTRUCTION_H_
 
-#include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
 #include <pcl/PointIndices.h>
 
@@ -21,8 +20,8 @@ public:
 	typedef typename PointCloud::Ptr PointCloudPtr;
 	typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 
-	FullReconstruction();
-	virtual ~FullReconstruction();
+	FullReconstruction(){};
+	virtual ~FullReconstruction(){};
 	virtual void reconstruct(PointCloudConstPtr &input_cloud,
 			const std::vector<pcl::PointIndices> &clustered_features,
 			std::vector<PointCloudPtr> &reconstructed_models) const =0;

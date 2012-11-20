@@ -8,7 +8,6 @@
 #ifndef FEATUREEXTRACTION_H_
 #define FEATUREEXTRACTION_H_
 
-#include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
 #include <pcl/PointIndices.h>
 
@@ -21,8 +20,8 @@ public:
 	typedef typename PointCloud::Ptr PointCloudPtr;
 	typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 
-	FeatureExtraction();
-	virtual ~FeatureExtraction();
+	FeatureExtraction(){};
+	virtual ~FeatureExtraction(){};
 	virtual void extractFeatures(PointCloudConstPtr &input_cloud,
 			std::vector<pcl::PointIndices> &features) const =0;
 };
