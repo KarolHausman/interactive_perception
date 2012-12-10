@@ -20,14 +20,18 @@ int main(int argc, char** argv) {
                 PluginManager manager;
 
                 ros::Rate loop_rate (1000);
+
+                //run everything once initially - it is not neccessary
                 manager.estimatePushPoint(input_cloud,output_cloud);
                 manager.staticSegment(input_cloud,segmentation_result,probabilities);
 
                   while(ros::ok())
                   {
-                    if(manager.mode_==PluginManager::PUSH_POINT)
-                        manager.estimatePushPoint(input_cloud,output_cloud);
-                    if(manager.mode_==PluginManager::STATIC_SEGMENTATION)
+                      ROS_DEBUG_STREAM("manager mode"<<manager.getMode());
+                      if((manager.getMode()==PluginManager::PUSH_POINT)||(manager.getMode()==PluginManager::ALL)){
+                          manager.estimatePushPoint(input_cloud,output_cloud);
+                      }
+                      if((manager.getMode()==PluginManager::STATIC_SEGMENTATION)||(manager.getMode()==PluginManager::ALL))
                         manager.staticSegment(input_cloud,segmentation_result,probabilities);
 
                     ros::spinOnce();
