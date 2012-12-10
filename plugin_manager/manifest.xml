@@ -9,6 +9,7 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/plugin_manager</url>
   <depend package="roscpp"/>
+  <depend package="pcl_typedefs"/>
   <depend package="pluginlib"/>
   <depend package="interactive_perception_interface"/>
 

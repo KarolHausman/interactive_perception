@@ -16,7 +16,8 @@
 
 namespace push_point_example {
 
-class PushPointImpl :public interactive_perception_interface::PushPoint {
+
+class PushPointImpl :public interactive_perception_interface::PushPoint<pcl::PointXYZRGB> {
 public:
 	PushPointImpl();
 	virtual ~PushPointImpl();

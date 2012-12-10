@@ -10,17 +10,15 @@
 
 #include <pcl/point_types.h>
 
-typedef typename pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
-typedef typename PointCloud::Ptr PointCloudPtr;
-typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 
 namespace interactive_perception_interface {
 
+template<typename PointType>
 class PushPoint {
 public:
-//	typedef typename pcl::PointCloud<PointType> PointCloud;
-//	typedef typename PointCloud::Ptr PointCloudPtr;
-//	typedef typename PointCloud::ConstPtr PointCloudConstPtr;
+	typedef typename pcl::PointCloud<PointType> PointCloud;
+	typedef typename PointCloud::Ptr PointCloudPtr;
+	typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 	PushPoint(){};
 	virtual ~PushPoint(){};
 	virtual void estimatePushPoint(PointCloudConstPtr &input_cloud,

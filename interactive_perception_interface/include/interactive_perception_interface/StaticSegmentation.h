@@ -10,10 +10,10 @@
 
 #include <pcl/point_types.h>
 #include <pcl/PointIndices.h>
-
-typedef typename pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
-typedef typename PointCloud::Ptr PointCloudPtr;
-typedef typename PointCloud::ConstPtr PointCloudConstPtr;
+#include <pcl_typedefs/pcl_typedefs.h>
+//typedef typename pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
+//typedef typename PointCloud::Ptr PointCloudPtr;
+//typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 
 namespace interactive_perception_interface {
 

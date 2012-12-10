@@ -9,7 +9,7 @@
 
 PLUGINLIB_DECLARE_CLASS(push_point_example, PushPointImpl,
 		push_point_example::PushPointImpl,
-		interactive_perception_interface::PushPoint)
+		interactive_perception_interface::PushPoint<pcl::PointXYZRGB>)
 
 namespace push_point_example {
 
