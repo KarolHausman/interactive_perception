@@ -12,6 +12,7 @@
   <depend package="pcl_typedefs"/>
   <depend package="pluginlib"/>
   <depend package="interactive_perception_interface"/>
+  <depend package="dynamic_reconfigure"/>
 
 </package>
 

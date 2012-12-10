@@ -1,7 +1,30 @@
 #include "plugin_manager/PluginManager.h"
 
-PluginManager::PluginManager()
+PluginManager::PluginManager():
+nh_("~/plugin_manager")
 {
+    reconfig_callback_ = boost::bind (&PluginManager::reconfigCallback, this, _1, _2);
+    reconfig_srv_.setCallback (reconfig_callback_);
+    mode_=PluginManager::INIT;
+}
+
+void PluginManager::reconfigCallback (plugin_manager::PluginManagerConfig &config,
+        uint32_t level){
+
+
+    if(config.manager_mode==1){
+        mode_=PluginManager::PUSH_POINT;
+        ROS_INFO("Running push point estimation...");
+    }
+    if(config.manager_mode==2){
+        mode_=PluginManager::STATIC_SEGMENTATION;
+        ROS_INFO("Running static segmentation...");
+
+    }
+    config.estimate_pushpoint=false;
+    config.static_segment=false;
+    config.manager_mode=0;
+
 }
 
 void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
@@ -24,7 +47,7 @@ void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
         ROS_ERROR(
                         "The plugin PushPoint failed to load for some reason. Error: %s", ex.what());
     }
-
+    mode_=PluginManager::INIT;
 }
 
 void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
@@ -47,6 +70,6 @@ void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
         ROS_ERROR(
                         "The plugin failed to load for some reason. Error: %s", ex.what());
     }
-
+    mode_=PluginManager::INIT;
 
 }
