@@ -12,6 +12,7 @@
   <depend package="pluginlib"/>
   <depend package="pcl"/>
   <depend package="interactive_perception_interface"/>
+  <depend package="dynamic_reconfigure"/>
   <export>
       <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lPushPointImpl" />
       <interactive_perception_interface plugin="${prefix}/PushPointImpl_plugin.xml" />      
