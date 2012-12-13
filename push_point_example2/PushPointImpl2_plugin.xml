@@ -1,0 +1,7 @@
+<library path="lib/libPushPointImpl2">
+  <class name="push_point_example2/PushPointImpl2"type="push_point_example2::PushPointImpl2"base_class_type="interactive_perception_interface::PushPoint">
+  <description>
+  This is a push point 2nd implementation plugin
+  </description>
+  </class>
+</library>

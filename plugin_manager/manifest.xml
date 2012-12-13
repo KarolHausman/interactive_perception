@@ -13,6 +13,7 @@
   <depend package="pluginlib"/>
   <depend package="interactive_perception_interface"/>
   <depend package="dynamic_reconfigure"/>
+  <depend package="visualizer"/>
 
 </package>
 

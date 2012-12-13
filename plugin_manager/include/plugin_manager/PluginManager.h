@@ -9,6 +9,7 @@
 #include "../../cfg/cpp/plugin_manager/PluginManagerConfig.h"
 
 #include <pcl_typedefs/pcl_typedefs.h>
+#include <visualizer/Visualizer.h>
 
 
 class PluginManager
@@ -45,6 +46,8 @@ private:
     std::vector<std::string> push_point_vector_;
     std::string push_point_impl_;
     Mode mode_;
+    Visualizer<PointType> visualizer_;
+
 
 };
 

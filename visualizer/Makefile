@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/karol/ros_workspace/interactive_perception/plugin_manager
+CMAKE_SOURCE_DIR = /home/karol/ros_workspace/interactive_perception/visualizer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/karol/ros_workspace/interactive_perception/plugin_manager
+CMAKE_BINARY_DIR = /home/karol/ros_workspace/interactive_perception/visualizer
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/karol/ros_workspace/interactive_perception/plugin_manager/CMakeFiles /home/karol/ros_workspace/interactive_perception/plugin_manager/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/karol/ros_workspace/interactive_perception/visualizer/CMakeFiles /home/karol/ros_workspace/interactive_perception/visualizer/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/karol/ros_workspace/interactive_perception/plugin_manager/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/karol/ros_workspace/interactive_perception/visualizer/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -97,19 +97,6 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named ROSBUILD_gencfg_cpp
-
-# Build rule for target.
-ROSBUILD_gencfg_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_gencfg_cpp
-.PHONY : ROSBUILD_gencfg_cpp
-
-# fast build rule for target.
-ROSBUILD_gencfg_cpp/fast:
-	$(MAKE) -f CMakeFiles/ROSBUILD_gencfg_cpp.dir/build.make CMakeFiles/ROSBUILD_gencfg_cpp.dir/build
-.PHONY : ROSBUILD_gencfg_cpp/fast
 
 #=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
@@ -177,19 +164,6 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
-# Target rules for targets named plugin_manager
-
-# Build rule for target.
-plugin_manager: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 plugin_manager
-.PHONY : plugin_manager
-
-# fast build rule for target.
-plugin_manager/fast:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/build
-.PHONY : plugin_manager/fast
-
-#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -214,32 +188,6 @@ rosbuild_premsgsrvgen: cmake_check_build_system
 rosbuild_premsgsrvgen/fast:
 	$(MAKE) -f CMakeFiles/rosbuild_premsgsrvgen.dir/build.make CMakeFiles/rosbuild_premsgsrvgen.dir/build
 .PHONY : rosbuild_premsgsrvgen/fast
-
-#=============================================================================
-# Target rules for targets named rospack_gencfg
-
-# Build rule for target.
-rospack_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rospack_gencfg
-.PHONY : rospack_gencfg
-
-# fast build rule for target.
-rospack_gencfg/fast:
-	$(MAKE) -f CMakeFiles/rospack_gencfg.dir/build.make CMakeFiles/rospack_gencfg.dir/build
-.PHONY : rospack_gencfg/fast
-
-#=============================================================================
-# Target rules for targets named rospack_gencfg_real
-
-# Build rule for target.
-rospack_gencfg_real: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rospack_gencfg_real
-.PHONY : rospack_gencfg_real
-
-# fast build rule for target.
-rospack_gencfg_real/fast:
-	$(MAKE) -f CMakeFiles/rospack_gencfg_real.dir/build.make CMakeFiles/rospack_gencfg_real.dir/build
-.PHONY : rospack_gencfg_real/fast
 
 #=============================================================================
 # Target rules for targets named rospack_genmsg
@@ -345,35 +293,33 @@ tests/fast:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
-# target to build an object file
-src/PluginManager.o:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/PluginManager.o
-.PHONY : src/PluginManager.o
+#=============================================================================
+# Target rules for targets named visualizer
 
-# target to preprocess a source file
-src/PluginManager.i:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/PluginManager.i
-.PHONY : src/PluginManager.i
+# Build rule for target.
+visualizer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizer
+.PHONY : visualizer
 
-# target to generate assembly for a file
-src/PluginManager.s:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/PluginManager.s
-.PHONY : src/PluginManager.s
+# fast build rule for target.
+visualizer/fast:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/build
+.PHONY : visualizer/fast
 
 # target to build an object file
-src/main.o:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/main.o
-.PHONY : src/main.o
+src/Visualizer.o:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.o
+.PHONY : src/Visualizer.o
 
 # target to preprocess a source file
-src/main.i:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/main.i
-.PHONY : src/main.i
+src/Visualizer.i:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.i
+.PHONY : src/Visualizer.i
 
 # target to generate assembly for a file
-src/main.s:
-	$(MAKE) -f CMakeFiles/plugin_manager.dir/build.make CMakeFiles/plugin_manager.dir/src/main.s
-.PHONY : src/main.s
+src/Visualizer.s:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.s
+.PHONY : src/Visualizer.s
 
 # Help Target
 help:
@@ -381,19 +327,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... ROSBUILD_gencfg_cpp"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
-	@echo "... plugin_manager"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
-	@echo "... rospack_gencfg"
-	@echo "... rospack_gencfg_real"
 	@echo "... rospack_genmsg"
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
@@ -402,12 +344,10 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
-	@echo "... src/PluginManager.o"
-	@echo "... src/PluginManager.i"
-	@echo "... src/PluginManager.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... visualizer"
+	@echo "... src/Visualizer.o"
+	@echo "... src/Visualizer.i"
+	@echo "... src/Visualizer.s"
 .PHONY : help
 
 
