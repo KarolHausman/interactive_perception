@@ -1,31 +1,22 @@
 #ifndef VISUALIZER_H
 #define VISUALIZER_H
 
+#include <pcl_typedefs/pcl_typedefs.h>
 #include <ros/ros.h>
-//#include <pcl/visualization/pcl_visualizer.h>
 
-//template<typename PointType>
+class VisualizerImpl;
 class Visualizer
 {
 public:
-//    typedef pcl::PointCloud<PointType> Cloud;
-//    typedef typename Cloud::Ptr CloudPtr;
-//    typedef typename Cloud::ConstPtr CloudConstPtr;
 
-    Visualizer():
-        point_cloud_number_(0)
-    {
-//        viewer_.initCameraParameters();
-//        viewer_.setBackgroundColor (0, 0, 0);
-    }
+    Visualizer();
+    ~Visualizer();
 
-
-//    void addPointCloud(CloudConstPtr input_cloud);
+    void addPointCloud(PointCloudPtr& input_cloud);
+    void spinOnce();
 
 private:
-//    pcl::visualization::PCLVisualizer viewer_;
-    std::string point_cloud_name_;
-    int point_cloud_number_;
+    VisualizerImpl * Impl;
 };
 
 #endif // VISUALIZER_H

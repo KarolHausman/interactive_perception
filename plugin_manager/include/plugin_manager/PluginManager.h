@@ -31,9 +31,14 @@ public:
     void estimatePushPoint(PointCloudConstPtr &input_cloud,
                                     PointCloudPtr &push_point_cloud);
 
+    void loadPointCloud(std::string file_name,PointCloudPtr &loaded_point_cloud);
+
     void staticSegment(PointCloudConstPtr &input_cloud,
                   std::vector<pcl::PointIndices> &segmentation_result,
                   std::vector<float> &probabilities);
+
+    void spinVisualizer();
+
 private:
 
     void reconfigCallback (plugin_manager::PluginManagerConfig &config,
@@ -46,7 +51,7 @@ private:
     std::vector<std::string> push_point_vector_;
     std::string push_point_impl_;
     Mode mode_;
-    Visualizer<PointType> visualizer_;
+    Visualizer visualizer_;
 
 
 };

@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-include_directories("~/ros_workspace/perception_new/pcl/include/pcl-1.7/")
-
+#include_directories("/usr/include/vtk-5.6/")
 # Set the build type.  Options are:
 #  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
 #  Debug          : w/ debug symbols, w/o optimization
@@ -26,6 +25,14 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 rosbuild_find_ros_package(dynamic_reconfigure)
 include(${dynamic_reconfigure_PACKAGE_PATH}/cmake/cfgbuild.cmake)
 gencfg()
+# VTK ####################
+#find_package(VTK REQUIRED)
+#include_directories(${VTK_INCLUDE_DIRS})
+#MESSAGE("vtk lib--------------------")
+#MESSAGE(${VTK_LIBRARY_DIRS})
+#SET(VTK_LIBRARIES vtkalglib vtkCharts vtkCommon vtkDICOMParser vtkexoIIc vtkFiltering vtkftgl vtkGenericFiltering vtkGeovis vtkGraphics vtkHybrid vtkImaging vtkInfovis vtkIO vtkmetaio vtkParallel vtkproj4 vtkQtChart vtkRendering vtksqlite vtksys vtkverdict vtkViews vtkVolumeRendering vtkWidgets)
+#SET(VTK_LIBRARIES vtkCommon vtkFiltering boost_system)
+
 
 set(INTERACTIVE_PERCEPTION_LIBS visualizer) 
 
@@ -37,3 +44,4 @@ set(INTERACTIVE_PERCEPTION_LIBS visualizer)
 rosbuild_add_executable(plugin_manager src/main.cpp src/PluginManager.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 target_link_libraries(plugin_manager ${INTERACTIVE_PERCEPTION_LIBS})
+#target_link_libraries(plugin_manager ${VTK_LIBRARIES})

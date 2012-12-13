@@ -1,7 +1,10 @@
 #include "plugin_manager/PluginManager.h"
+#include <pcl/io/pcd_io.h>
+
 
 PluginManager::PluginManager():
-nh_("~/plugin_manager")
+nh_("~/plugin_manager"),
+visualizer_()
 {
     push_point_vector_.push_back("push_point_example/PushPointImpl");
     push_point_vector_.push_back("push_point_example2/PushPointImpl2");
@@ -40,6 +43,11 @@ void PluginManager::reconfigCallback (plugin_manager::PluginManagerConfig &confi
 
 }
 
+void PluginManager::loadPointCloud(std::string file_name,PointCloudPtr &loaded_point_cloud){
+    pcl::io::loadPCDFile(file_name,*loaded_point_cloud);
+}
+
+
 void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
                                  PointCloudPtr &push_point_cloud){
 
@@ -48,9 +56,7 @@ void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
                     "interactive_perception_interface::PushPoint");
 
 
-    interactive_perception_interface::PushPoint<PointType>* push_point_impl =
-                    NULL;
-
+    interactive_perception_interface::PushPoint<PointType>* push_point_impl=NULL;
     try{
         push_point_impl = seg_loader_push_point.createClassInstance(
                         push_point_impl_);
@@ -63,6 +69,12 @@ void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
     if(mode_!=PluginManager::ALL){
         setMode(PluginManager::INIT);
     }
+    visualizer_.addPointCloud(push_point_cloud);
+    visualizer_.spinOnce();
+}
+
+void PluginManager::spinVisualizer(){
+    visualizer_.spinOnce();
 }
 
 void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
@@ -74,8 +86,7 @@ void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
                     "interactive_perception_interface",
                     "interactive_perception_interface::StaticSegmentation");
 
-    interactive_perception_interface::StaticSegmentation* static_seg_impl =
-                    NULL;
+    interactive_perception_interface::StaticSegmentation* static_seg_impl=NULL;
     try{
         static_seg_impl = seg_loader_st_seg.createClassInstance(
                         "static_segmentation_example/StaticSegmentationImpl");

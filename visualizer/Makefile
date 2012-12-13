@@ -307,19 +307,19 @@ visualizer/fast:
 .PHONY : visualizer/fast
 
 # target to build an object file
-src/Visualizer.o:
-	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.o
-.PHONY : src/Visualizer.o
+src/VisualizerImpl.o:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/VisualizerImpl.o
+.PHONY : src/VisualizerImpl.o
 
 # target to preprocess a source file
-src/Visualizer.i:
-	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.i
-.PHONY : src/Visualizer.i
+src/VisualizerImpl.i:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/VisualizerImpl.i
+.PHONY : src/VisualizerImpl.i
 
 # target to generate assembly for a file
-src/Visualizer.s:
-	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/Visualizer.s
-.PHONY : src/Visualizer.s
+src/VisualizerImpl.s:
+	$(MAKE) -f CMakeFiles/visualizer.dir/build.make CMakeFiles/visualizer.dir/src/VisualizerImpl.s
+.PHONY : src/VisualizerImpl.s
 
 # Help Target
 help:
@@ -345,9 +345,9 @@ help:
 	@echo "... test-results-run"
 	@echo "... tests"
 	@echo "... visualizer"
-	@echo "... src/Visualizer.o"
-	@echo "... src/Visualizer.i"
-	@echo "... src/Visualizer.s"
+	@echo "... src/VisualizerImpl.o"
+	@echo "... src/VisualizerImpl.i"
+	@echo "... src/VisualizerImpl.s"
 .PHONY : help
 
 

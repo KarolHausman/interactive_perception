@@ -12,13 +12,17 @@
 
 int main(int argc, char** argv) {
   ros::init (argc, argv, "plugin_manager");
-		PointCloudConstPtr input_cloud;
-		PointCloudPtr output_cloud;
+  PointCloudConstPtr input_cloud(new PointCloud);
+  PointCloudPtr output_cloud(new PointCloud);
+//  pcl::PointCloud<pcl::PointXYZRGB>::Ptr input_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+//  pcl::PointCloud<pcl::PointXYZRGB>::Ptr output_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+
 
 		std::vector<pcl::PointIndices> segmentation_result;
 		std::vector<float> probabilities;
                 PluginManager manager;
 
+                manager.loadPointCloud("1347654642.975826780.pcd",output_cloud);
                 ros::Rate loop_rate (1000);
 
                 //run everything once initially - it is not neccessary
@@ -34,6 +38,7 @@ int main(int argc, char** argv) {
                       if((manager.getMode()==PluginManager::STATIC_SEGMENTATION)||(manager.getMode()==PluginManager::ALL))
                         manager.staticSegment(input_cloud,segmentation_result,probabilities);
 
+                    manager.spinVisualizer();
                     ros::spinOnce();
                     loop_rate.sleep();
                   }
