@@ -11,20 +11,20 @@
 
 //Declare the StaticSegmentationImpl as a StaticSegmentation class
 PLUGINLIB_DECLARE_CLASS(static_segmentation_example, StaticSegmentationImpl,
-		static_segmentation_example::StaticSegmentationImpl,
-		interactive_perception_interface::StaticSegmentation)
+                        static_segmentation_example::StaticSegmentationImpl,
+                        interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB>)
 
 namespace static_segmentation_example {
-StaticSegmentationImpl::StaticSegmentationImpl() {
-}
+    StaticSegmentationImpl::StaticSegmentationImpl() {
+    }
 
-StaticSegmentationImpl::~StaticSegmentationImpl() {
-}
+    StaticSegmentationImpl::~StaticSegmentationImpl() {
+    }
 
-void StaticSegmentationImpl::segment(PointCloudConstPtr &input_cloud,
-		std::vector<pcl::PointIndices> &segmentation_result,
-		std::vector<float> &probabilities) const {
+    void StaticSegmentationImpl::segment(const PointCloudConstPtr &input_cloud,
+                                         std::vector<pcl::PointIndices> &segmentation_result,
+                                         std::vector<float> &probabilities)  {
 	ROS_INFO_STREAM("static segmentation called");
-}
+    }
 }
 ;

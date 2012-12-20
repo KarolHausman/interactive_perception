@@ -29,29 +29,30 @@ public:
     void setMode(Mode mode){mode_=mode;}
 
     void estimatePushPoint(PointCloudConstPtr &input_cloud,
-                                    PointCloudPtr &push_point_cloud);
+                           PointCloudPtr &push_point_cloud);
 
-    void loadPointCloud(std::string file_name,PointCloudPtr &loaded_point_cloud);
+    void loadPointCloud(PointCloudPtr &loaded_point_cloud);
 
     void staticSegment(PointCloudConstPtr &input_cloud,
-                  std::vector<pcl::PointIndices> &segmentation_result,
-                  std::vector<float> &probabilities);
+                       std::vector<pcl::PointIndices> &segmentation_result,
+                       std::vector<float> &probabilities);
 
     void spinVisualizer();
 
 private:
 
     void reconfigCallback (plugin_manager::PluginManagerConfig &config,
-            uint32_t level);
+                           uint32_t level);
 
     dynamic_reconfigure::Server<plugin_manager::PluginManagerConfig> reconfig_srv_;
     dynamic_reconfigure::Server<plugin_manager::PluginManagerConfig>::CallbackType
-          reconfig_callback_;
+    reconfig_callback_;
     ros::NodeHandle nh_;
     std::vector<std::string> push_point_vector_;
     std::string push_point_impl_;
     Mode mode_;
     Visualizer visualizer_;
+    std::string cloud_name_;
 
 
 };

@@ -12,15 +12,15 @@
 
 namespace static_segmentation_example
 {
-  class StaticSegmentationImpl : public interactive_perception_interface::StaticSegmentation
-  {
-    public:
-      StaticSegmentationImpl ();
-      virtual ~StaticSegmentationImpl ();
+class StaticSegmentationImpl : public interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB>
+{
+public:
+    StaticSegmentationImpl ();
+    virtual ~StaticSegmentationImpl ();
 
-      void segment (PointCloudConstPtr &input_cloud,
-			std::vector<pcl::PointIndices> &segmentation_result,
-			std::vector<float> &probabilities)const;
-  };
+    void segment (const PointCloudConstPtr &input_cloud,
+                  std::vector<pcl::PointIndices> &segmentation_result,
+                  std::vector<float> &probabilities);
+};
 };
 #endif /* STATIC_SEGMENTATION_H_ */

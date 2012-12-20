@@ -16,14 +16,14 @@ namespace interactive_perception_interface {
 template<typename PointType>
 class FeatureExtraction {
 public:
-	typedef typename pcl::PointCloud<PointType> PointCloud;
-	typedef typename PointCloud::Ptr PointCloudPtr;
-	typedef typename PointCloud::ConstPtr PointCloudConstPtr;
+    typedef typename pcl::PointCloud<PointType> PointCloud;
+    typedef typename PointCloud::Ptr PointCloudPtr;
+    typedef typename PointCloud::ConstPtr PointCloudConstPtr;
 
-	FeatureExtraction(){};
-	virtual ~FeatureExtraction(){};
-	virtual void extractFeatures(PointCloudConstPtr &input_cloud,
-			std::vector<pcl::PointIndices> &features) const =0;
+    FeatureExtraction(){};
+    virtual ~FeatureExtraction(){};
+    virtual void extractFeatures(const PointCloudConstPtr &input_cloud,
+                                 std::vector<pcl::PointIndices> &features) const =0;
 };
 
 } /*namespace interactive_perception_interface */

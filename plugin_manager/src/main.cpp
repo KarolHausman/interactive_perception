@@ -11,38 +11,38 @@
 #include <ros/ros.h>
 
 int main(int argc, char** argv) {
-  ros::init (argc, argv, "plugin_manager");
-  PointCloudConstPtr input_cloud(new PointCloud);
-  PointCloudPtr output_cloud(new PointCloud);
-//  pcl::PointCloud<pcl::PointXYZRGB>::Ptr input_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
-//  pcl::PointCloud<pcl::PointXYZRGB>::Ptr output_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+    ros::init (argc, argv, "plugin_manager");
+    PointCloudConstPtr input_cloud(new PointCloud);
+    PointCloudPtr output_cloud(new PointCloud);
+    //  pcl::PointCloud<pcl::PointXYZRGB>::Ptr input_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+    //  pcl::PointCloud<pcl::PointXYZRGB>::Ptr output_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
 
 
-		std::vector<pcl::PointIndices> segmentation_result;
-		std::vector<float> probabilities;
-                PluginManager manager;
+    std::vector<pcl::PointIndices> segmentation_result;
+    std::vector<float> probabilities;
+    PluginManager manager;
 
-                manager.loadPointCloud("1347654642.975826780.pcd",output_cloud);
-                ros::Rate loop_rate (1000);
+    manager.loadPointCloud(output_cloud);
+    ros::Rate loop_rate (1000);
 
-                //run everything once initially - it is not neccessary
-                manager.estimatePushPoint(input_cloud,output_cloud);
-                manager.staticSegment(input_cloud,segmentation_result,probabilities);
+    //run everything once initially - it is not neccessary
+    manager.estimatePushPoint(input_cloud,output_cloud);
+    manager.staticSegment(input_cloud,segmentation_result,probabilities);
 
-                  while(ros::ok())
-                  {
-                      ROS_DEBUG_STREAM("manager mode"<<manager.getMode());
-                      if((manager.getMode()==PluginManager::PUSH_POINT)||(manager.getMode()==PluginManager::ALL)){
-                          manager.estimatePushPoint(input_cloud,output_cloud);
-                      }
-                      if((manager.getMode()==PluginManager::STATIC_SEGMENTATION)||(manager.getMode()==PluginManager::ALL))
-                        manager.staticSegment(input_cloud,segmentation_result,probabilities);
+    while(ros::ok())
+    {
+        ROS_DEBUG_STREAM("manager mode"<<manager.getMode());
+        if((manager.getMode()==PluginManager::PUSH_POINT)||(manager.getMode()==PluginManager::ALL)){
+            manager.estimatePushPoint(input_cloud,output_cloud);
+        }
+        if((manager.getMode()==PluginManager::STATIC_SEGMENTATION)||(manager.getMode()==PluginManager::ALL))
+            manager.staticSegment(input_cloud,segmentation_result,probabilities);
 
-                    manager.spinVisualizer();
-                    ros::spinOnce();
-                    loop_rate.sleep();
-                  }
+        manager.spinVisualizer();
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
 
 
-	return 0;
+    return 0;
 }

@@ -3,8 +3,8 @@
 
 
 PluginManager::PluginManager():
-nh_("~/plugin_manager"),
-visualizer_()
+    nh_("~/plugin_manager"),
+    visualizer_()
 {
     push_point_vector_.push_back("push_point_example/PushPointImpl");
     push_point_vector_.push_back("push_point_example2/PushPointImpl2");
@@ -17,7 +17,9 @@ visualizer_()
 }
 
 void PluginManager::reconfigCallback (plugin_manager::PluginManagerConfig &config,
-        uint32_t level){
+                                      uint32_t level){
+
+    cloud_name_=config.cloud_name;
 
     if(config.manager_mode==1){
         setMode(PluginManager::ALL);
@@ -43,28 +45,28 @@ void PluginManager::reconfigCallback (plugin_manager::PluginManagerConfig &confi
 
 }
 
-void PluginManager::loadPointCloud(std::string file_name,PointCloudPtr &loaded_point_cloud){
-    pcl::io::loadPCDFile(file_name,*loaded_point_cloud);
+void PluginManager::loadPointCloud(PointCloudPtr &loaded_point_cloud){
+    pcl::io::loadPCDFile(cloud_name_,*loaded_point_cloud);
 }
 
 
 void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
-                                 PointCloudPtr &push_point_cloud){
+                                      PointCloudPtr &push_point_cloud){
 
     pluginlib::ClassLoader<interactive_perception_interface::PushPoint<pcl::PointXYZRGB> > seg_loader_push_point(
-                    "interactive_perception_interface",
-                    "interactive_perception_interface::PushPoint");
+                "interactive_perception_interface",
+                "interactive_perception_interface::PushPoint");
 
 
-    interactive_perception_interface::PushPoint<PointType>* push_point_impl=NULL;
+    interactive_perception_interface::PushPoint<pcl::PointXYZRGB>* push_point_impl=NULL;
     try{
         push_point_impl = seg_loader_push_point.createClassInstance(
-                        push_point_impl_);
+                    push_point_impl_);
         push_point_impl->estimatePushPoint(input_cloud,push_point_cloud);
 
     } catch (pluginlib::PluginlibException& ex) {
         ROS_ERROR(
-                        "The plugin PushPoint failed to load for some reason. Error: %s", ex.what());
+                    "The plugin PushPoint failed to load for some reason. Error: %s", ex.what());
     }
     if(mode_!=PluginManager::ALL){
         setMode(PluginManager::INIT);
@@ -78,23 +80,23 @@ void PluginManager::spinVisualizer(){
 }
 
 void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
-              std::vector<pcl::PointIndices> &segmentation_result,
-              std::vector<float> &probabilities){
+                                  std::vector<pcl::PointIndices> &segmentation_result,
+                                  std::vector<float> &probabilities){
 
 
-    pluginlib::ClassLoader<interactive_perception_interface::StaticSegmentation> seg_loader_st_seg(
-                    "interactive_perception_interface",
-                    "interactive_perception_interface::StaticSegmentation");
+    pluginlib::ClassLoader<interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB> > seg_loader_st_seg(
+                "interactive_perception_interface",
+                "interactive_perception_interface::StaticSegmentation");
 
-    interactive_perception_interface::StaticSegmentation* static_seg_impl=NULL;
+    interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB>* static_seg_impl=NULL;
     try{
         static_seg_impl = seg_loader_st_seg.createClassInstance(
-                        "static_segmentation_example/StaticSegmentationImpl");
+                    "static_segmentation_example/StaticSegmentationImpl");
         static_seg_impl->segment(input_cloud, segmentation_result,
-                        probabilities);
+                                 probabilities);
     } catch (pluginlib::PluginlibException& ex) {
         ROS_ERROR(
-                        "The plugin failed to load for some reason. Error: %s", ex.what());
+                    "The plugin failed to load for some reason. Error: %s", ex.what());
     }
     //no if because the last step
     setMode(PluginManager::INIT);
