@@ -49,16 +49,16 @@ void PluginManager::loadPointCloud(PointCloudPtr &loaded_point_cloud){
     pcl::io::loadPCDFile(cloud_name_,*loaded_point_cloud);
 }
 
+template<typename PointType>
+void PluginManager::estimatePushPoint(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
+                                      typename pcl::PointCloud<PointType>::Ptr &push_point_cloud){
 
-void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
-                                      PointCloudPtr &push_point_cloud){
-
-    pluginlib::ClassLoader<interactive_perception_interface::PushPoint<pcl::PointXYZRGB> > seg_loader_push_point(
+    pluginlib::ClassLoader<typename interactive_perception_interface::PushPoint<PointType> > seg_loader_push_point(
                 "interactive_perception_interface",
                 "interactive_perception_interface::PushPoint");
 
 
-    interactive_perception_interface::PushPoint<pcl::PointXYZRGB>* push_point_impl=NULL;
+    typename interactive_perception_interface::PushPoint<PointType>* push_point_impl=NULL;
     try{
         push_point_impl = seg_loader_push_point.createClassInstance(
                     push_point_impl_);
@@ -78,17 +78,17 @@ void PluginManager::estimatePushPoint(PointCloudConstPtr &input_cloud,
 void PluginManager::spinVisualizer(){
     visualizer_.spinOnce();
 }
-
-void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
+template<typename PointType>
+void PluginManager::staticSegment(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
                                   std::vector<pcl::PointIndices> &segmentation_result,
                                   std::vector<float> &probabilities){
 
 
-    pluginlib::ClassLoader<interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB> > seg_loader_st_seg(
+    pluginlib::ClassLoader<typename interactive_perception_interface::StaticSegmentation<PointType> > seg_loader_st_seg(
                 "interactive_perception_interface",
                 "interactive_perception_interface::StaticSegmentation");
 
-    interactive_perception_interface::StaticSegmentation<pcl::PointXYZRGB>* static_seg_impl=NULL;
+    typename interactive_perception_interface::StaticSegmentation<PointType>* static_seg_impl=NULL;
     try{
         static_seg_impl = seg_loader_st_seg.createClassInstance(
                     "static_segmentation_example/StaticSegmentationImpl");
@@ -102,3 +102,10 @@ void PluginManager::staticSegment(PointCloudConstPtr &input_cloud,
     setMode(PluginManager::INIT);
 
 }
+
+template void PluginManager::estimatePushPoint<pcl::PointXYZRGB>(const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr &input_cloud,
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr &push_point_cloud);
+
+template void PluginManager::staticSegment<pcl::PointXYZRGB>(const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr &input_cloud,
+std::vector<pcl::PointIndices> &segmentation_result,
+std::vector<float> &probabilities);

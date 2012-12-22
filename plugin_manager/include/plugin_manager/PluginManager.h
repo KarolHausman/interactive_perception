@@ -8,7 +8,6 @@
 #include <dynamic_reconfigure/server.h>
 #include "../../cfg/cpp/plugin_manager/PluginManagerConfig.h"
 
-#include <pcl_typedefs/pcl_typedefs.h>
 #include <visualizer/Visualizer.h>
 
 
@@ -28,12 +27,14 @@ public:
 
     void setMode(Mode mode){mode_=mode;}
 
-    void estimatePushPoint(PointCloudConstPtr &input_cloud,
-                           PointCloudPtr &push_point_cloud);
+    template<typename PointType>
+    void estimatePushPoint(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
+                           typename pcl::PointCloud<PointType>::Ptr &push_point_cloud);
 
     void loadPointCloud(PointCloudPtr &loaded_point_cloud);
 
-    void staticSegment(PointCloudConstPtr &input_cloud,
+    template<typename PointType>
+    void staticSegment(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
                        std::vector<pcl::PointIndices> &segmentation_result,
                        std::vector<float> &probabilities);
 

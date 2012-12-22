@@ -9,7 +9,7 @@ typedef pcl::PointNormal PointNormal;
 //typedef typename pcl::PointCloud<PointType> PointCloud;
 
 
-typedef pcl::PointCloud<PointType> PointCloud;
+typedef pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
 typedef PointCloud::Ptr PointCloudPtr;
 typedef PointCloud::ConstPtr PointCloudConstPtr;
 
