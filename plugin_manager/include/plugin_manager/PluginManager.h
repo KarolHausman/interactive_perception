@@ -11,6 +11,7 @@
 #include <visualizer/Visualizer.h>
 
 
+
 class PluginManager
 {
 public:
