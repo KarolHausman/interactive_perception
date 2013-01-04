@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-include_directories("/usr/include/vtk-5.6/")
+#include_directories("/usr/include/vtk-5.6/")
 #include_directories("~/ros_workspace/perception_new/pcl/include/pcl-1.7/")
 #include_directories("/usr/include/vtk-5.6/")
 # Set the build type.  Options are:

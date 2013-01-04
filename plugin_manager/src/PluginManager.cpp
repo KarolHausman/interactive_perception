@@ -44,9 +44,11 @@ void PluginManager::reconfigCallback (plugin_manager::PluginManagerConfig &confi
     config.manager_mode=0;
 
 }
-
-void PluginManager::loadPointCloud(PointCloudPtr &loaded_point_cloud){
-    pcl::io::loadPCDFile(cloud_name_,*loaded_point_cloud);
+template<typename PointType>
+void PluginManager::loadPointCloud(typename pcl::PointCloud<PointType>::Ptr &loaded_point_cloud){
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr loaded_point_cloud_temp(new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::io::loadPCDFile(cloud_name_,*loaded_point_cloud_temp);
+    pcl::copyPointCloud(*loaded_point_cloud_temp,*loaded_point_cloud);
 }
 
 template<typename PointType>
@@ -109,3 +111,5 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr &push_point_cloud);
 template void PluginManager::staticSegment<pcl::PointXYZRGB>(const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr &input_cloud,
 std::vector<pcl::PointIndices> &segmentation_result,
 std::vector<float> &probabilities);
+
+template void PluginManager::loadPointCloud<pcl::PointXYZRGB>(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &loaded_point_cloud);

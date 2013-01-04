@@ -12,8 +12,6 @@
 
 int main(int argc, char** argv) {
     ros::init (argc, argv, "plugin_manager");
-//    PointCloudConstPtr input_cloud(new PointCloud);
-//    PointCloudPtr output_cloud(new PointCloud);
       pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr input_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
       pcl::PointCloud<pcl::PointXYZRGB>::Ptr output_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
 
@@ -22,7 +20,7 @@ int main(int argc, char** argv) {
     std::vector<float> probabilities;
     PluginManager manager;
 
-    manager.loadPointCloud(output_cloud);
+    manager.loadPointCloud<pcl::PointXYZRGB>(output_cloud);
     ros::Rate loop_rate (1000);
 
     //run everything once initially - it is not neccessary

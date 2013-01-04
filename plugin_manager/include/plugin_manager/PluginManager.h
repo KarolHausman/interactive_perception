@@ -32,7 +32,8 @@ public:
     void estimatePushPoint(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
                            typename pcl::PointCloud<PointType>::Ptr &push_point_cloud);
 
-    void loadPointCloud(PointCloudPtr &loaded_point_cloud);
+    template<typename PointType>
+    void loadPointCloud(typename pcl::PointCloud<PointType>::Ptr &loaded_point_cloud);
 
     template<typename PointType>
     void staticSegment(const typename pcl::PointCloud<PointType>::ConstPtr &input_cloud,
