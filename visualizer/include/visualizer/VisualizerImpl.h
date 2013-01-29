@@ -5,14 +5,9 @@
 #include <ros/ros.h>
 #include <pcl/visualization/pcl_visualizer.h>
 
-//class VisualizerImpl;
-//template<typename PointType>
 class VisualizerImpl
 {
 public:
-//    typedef pcl::PointCloud<PointType> Cloud;
-//    typedef typename Cloud::Ptr CloudPtr;
-//    typedef typename Cloud::ConstPtr CloudConstPtr;
 
     VisualizerImpl():
         point_cloud_number_(0)
