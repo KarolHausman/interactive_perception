@@ -12,8 +12,11 @@ public:
     Visualizer();
     ~Visualizer();
 
+    void addPointCloudColor(PointCloudPtr& input_cloud);
     void addPointCloud(PointCloudPtr& input_cloud);
     void spinOnce();
+    void removeAllClouds();
+
 
 private:
     VisualizerImpl * Impl;

@@ -22,6 +22,22 @@ public:
         viewer_->spinOnce (100);
     }
 
+    void removeAllClouds()
+    {
+      viewer_->removeAllPointClouds();
+    }
+
+    void addPointCloudColor(PointCloudPtr& input_cloud){
+
+        std::stringstream convertToString;
+        convertToString<<point_cloud_number_;
+        point_cloud_name_=convertToString.str();
+        pcl::visualization::PointCloudColorHandlerRGBField<PointType> rgb(input_cloud);
+        viewer_->addPointCloud<PointType>(input_cloud,rgb,point_cloud_name_);
+        point_cloud_number_++;
+        this->spinOnce();
+
+    }
     void addPointCloud(PointCloudPtr& input_cloud){
 
         std::stringstream convertToString;
