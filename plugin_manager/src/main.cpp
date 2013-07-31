@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 
         manager.spinVisualizer();
         ros::spinOnce();
-        loop_rate.sleep();
+        //loop_rate.sleep();
     }
 
 
