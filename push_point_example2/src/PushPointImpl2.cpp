@@ -20,8 +20,9 @@ PushPointImpl2::PushPointImpl2() {
 PushPointImpl2::~PushPointImpl2() {
 }
 
-void PushPointImpl2::estimatePushPoint(PointCloudConstPtr &input_cloud,
-				PointCloudPtr &push_point_cloud)const{
+void PushPointImpl2::estimatePushPoint(const PointCloudConstPtr &input_cloud,
+                PointCloudPtr &push_point_cloud)
+{
 
 	ROS_INFO_STREAM("estimate push point 2nd implementation called");
 	}

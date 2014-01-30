@@ -21,8 +21,8 @@ class PushPointImpl2 :public interactive_perception_interface::PushPoint<pcl::Po
 public:
 	PushPointImpl2();
 	virtual ~PushPointImpl2();
-	void estimatePushPoint(PointCloudConstPtr &input_cloud,
-				PointCloudPtr &push_point_cloud)const;
+    void estimatePushPoint(const PointCloudConstPtr &input_cloud,
+                PointCloudPtr &push_point_cloud);
 };
 
 } /* namespace push_point_example2 */
