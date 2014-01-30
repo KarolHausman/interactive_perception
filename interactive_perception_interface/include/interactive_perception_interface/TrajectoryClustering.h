@@ -15,8 +15,12 @@ public:
 
     TrajectoryClustering(){};
     virtual ~TrajectoryClustering(){};
-    virtual void cluster(const std::vector<std::vector<pcl::PointIndices>  >&features_over_time,
-                         std::vector<pcl::PointIndices> &clustered_features);
+
+    /*
+     * clusters features that were collected by Tracker
+     */
+    virtual void cluster(const std::vector<std::vector<pcl::PointIndices> >&features_over_time,
+                         std::vector<pcl::PointIndices> &clustered_features) = 0;
 };
 
 } /* namespace interactive_perception_interface */

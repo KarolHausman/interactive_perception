@@ -13,7 +13,6 @@ srv_gen
 msg_gen
 
 #some data types
-*.pcd
 *.jpg
 
 #local copies 

@@ -22,5 +22,5 @@ public:
                   std::vector<pcl::PointIndices> &segmentation_result,
                   std::vector<float> &probabilities);
 };
-};
+}
 #endif /* STATIC_SEGMENTATION_H_ */

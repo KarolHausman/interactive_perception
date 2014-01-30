@@ -22,9 +22,13 @@ public:
 
     Tracker(){};
     virtual ~Tracker(){};
+
+    /*
+     * tracks features in the given point cloud. Outputs a matrix of features tracked over time
+     */
     virtual void track(const PointCloudConstPtr &input_cloud,
                        const std::vector<pcl::PointIndices> &input_features,
-                       std::vector<std::vector<pcl::PointIndices>  >&features_over_time);
+                       std::vector<std::vector<pcl::PointIndices>  >&features_over_time) = 0;
 };
 
 } /* namespace interactive_perception_interface */

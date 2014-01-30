@@ -22,8 +22,12 @@ public:
 
     FeatureExtraction(){};
     virtual ~FeatureExtraction(){};
+
+    /*
+     * extracts 3D features in a given point cloud
+     */
     virtual void extractFeatures(const PointCloudConstPtr &input_cloud,
-                                 std::vector<pcl::PointIndices> &features) const =0;
+                                 std::vector<pcl::PointIndices> &features) = 0;
 };
 
 } /*namespace interactive_perception_interface */

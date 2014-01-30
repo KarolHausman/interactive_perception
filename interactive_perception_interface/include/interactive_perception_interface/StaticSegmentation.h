@@ -22,10 +22,17 @@ public:
     StaticSegmentation(){}
     virtual ~StaticSegmentation(){}
 
+
+    /*
+     * segments a point cloud and gives probabilities of the object being segmented correctly
+     */
     virtual void segment(const PointCloudConstPtr &input_cloud,
                          std::vector<pcl::PointIndices> &segmentation_result,
                          std::vector<float> &probabilities){}
 
+    /*
+     * segments a point cloud
+     */
     virtual void segment(const PointCloudConstPtr &input_cloud,
                          std::vector<pcl::PointIndices> &segmentation_result){}
 };

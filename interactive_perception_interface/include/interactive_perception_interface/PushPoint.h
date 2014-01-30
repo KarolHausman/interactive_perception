@@ -20,8 +20,17 @@ public:
     typedef typename PointCloud::ConstPtr PointCloudConstPtr;
     PushPoint(){}
     virtual ~PushPoint(){}
+
+    /*
+     * estimates the point where a robot needs to push. The point is represented as a cloud.
+     */
     virtual void estimatePushPoint(const PointCloudConstPtr &input_cloud,
                                    PointCloudPtr &push_point_cloud){}
+
+    /*
+     * estimates the point where a robot needs to push. The point is represented as a
+     * transformation matrix
+     */
     virtual void estimatePushPoint(const PointCloudConstPtr &input_cloud,
                                    Eigen::Matrix4d &push_point){}
 };

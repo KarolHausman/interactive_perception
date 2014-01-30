@@ -15,8 +15,12 @@ public:
 
     Manipulation(){};
     virtual ~Manipulation(){};
-    virtual void manipulate(const PointCloudConstPtr &push_point_cloud);
-    virtual void manipulate(const Eigen::Matrix4d &push_point);
+
+    /*
+     * manipulates a robot's arm to get to the push point
+     */
+    virtual void manipulate(const PointCloudConstPtr &push_point_cloud){};
+    virtual void manipulate(const Eigen::Matrix4d &push_point){};
 };
 
 } /*namespace interactive_perception_interface */

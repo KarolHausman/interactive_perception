@@ -22,9 +22,13 @@ public:
 
     FullReconstruction(){};
     virtual ~FullReconstruction(){};
+
+    /*
+     * reconstructs full models of segmented objects. To be called after TrajectoryClustering
+     */
     virtual void reconstruct(const PointCloudConstPtr &input_cloud,
                              const std::vector<pcl::PointIndices> &clustered_features,
-                             std::vector<PointCloudPtr> &reconstructed_models) const =0;
+                             std::vector<PointCloudPtr> &reconstructed_models) = 0;
 };
 
 } /* namespace interactive_perception_interface */

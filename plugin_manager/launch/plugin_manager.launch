@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="dynamic_reconfigure" type="reconfigure_gui" name="dynamic_reconfigure" cwd="node" required="false" output="screen" />
+
+  <node pkg="plugin_manager" type="plugin_manager" name="plugin_manager" cwd="node" required="true" output="screen">
+    <param name="/plugin_manager/cloud_name"                 value="../../cloud_test.pcd"/>
+  </node>      
+
+</launch>
